@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        <header>
+            <h1>Plush</h1>
+            <nav>
+                <ul>
+                    <li>Home</li>
+                    <li>Plushies</li>
+                    <li>About</li>
+                </ul>
+            </nav>
+        </header>
+        <main>{% block body %}{% endblock %}</main>
+        <footer>
+        
+        
+        </footer>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
