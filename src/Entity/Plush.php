@@ -22,10 +22,14 @@ class Plush
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="plushes")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="text")
      */
-    private $category_id;
+    private $description;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="plushes")
+     */
+    private $category;
 
     public function getId(): ?int
     {
@@ -44,14 +48,26 @@ class Plush
         return $this;
     }
 
-    public function getCategoryId(): ?Category
+    public function getDescription(): ?string
     {
-        return $this->category_id;
+        return $this->description;
     }
 
-    public function setCategoryId(?Category $category_id): self
+    public function setDescription(string $description): self
     {
-        $this->category_id = $category_id;
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

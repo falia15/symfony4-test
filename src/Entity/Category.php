@@ -24,7 +24,7 @@ class Category
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Plush", mappedBy="category_id")
+     * @ORM\OneToMany(targetEntity="App\Entity\Plush", mappedBy="category")
      */
     private $plushes;
 
@@ -62,7 +62,7 @@ class Category
     {
         if (!$this->plushes->contains($plush)) {
             $this->plushes[] = $plush;
-            $plush->setCategoryId($this);
+            $plush->setCategory($this);
         }
 
         return $this;
@@ -73,8 +73,8 @@ class Category
         if ($this->plushes->contains($plush)) {
             $this->plushes->removeElement($plush);
             // set the owning side to null (unless already changed)
-            if ($plush->getCategoryId() === $this) {
-                $plush->setCategoryId(null);
+            if ($plush->getCategory() === $this) {
+                $plush->setCategory(null);
             }
         }
 
